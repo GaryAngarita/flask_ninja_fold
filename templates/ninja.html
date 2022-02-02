@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div id="container">
+        <p>Your gold: <span>{{ session['gold'] }}</span></p>
+        <div id="all_boxes">
+            <div class="equal_boxes">
+                <h3>Farm</h3>
+                <p>(earns 10-20 gold)</p>
+                <form action="/process_money" method="POST">
+                    <input type="hidden" name="location" value="farm">
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div>
+            <div class="equal_boxes">
+                <h3>Cave</h3>
+                <p>(earns 5-10 gold)</p>
+                <form action="/process_money" method="POST">
+                    <input type="hidden" name="location" value="cave">
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div>
+            <div class="equal_boxes">
+                <h3>House</h3>
+                <p>(earns 2-5 gold)</p>
+                <form action="/process_money" method="POST">
+                    <input type="hidden" name="location" value="house">
+                    <button type="submit">Find Gold!</button>
+                </form>
+            </div>
+            <div class="equal_boxes">
+                <h3>Casino</h3>
+                <p>(earns/takes 0-50 gold)</p>
+                <form action="/process_money" method="POST">
+                    <input type="hidden" name="location" value="casino">
+                    <button type="submit">Gamble Gold!</button>
+                </form>
+            </div>
+            <div id="all_active">
+                <div class="activities">
+                    <h3>Activity</h3>
+                    <div id="entries">
+                        {% for activity in activities %}
+                            <p>{{ activity }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% if session['count'] > 25 or session['gold'] > 250 %}
+                <a class="activities" href="/reset">Start Over</a>
+                {% endif %}
+            </div>
+
+
+        </div>
+    </div>
+</body>
+</html>

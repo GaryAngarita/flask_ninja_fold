@@ -1,0 +1,31 @@
+#all_boxes{
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.equal_boxes{
+    display: inline-block;
+    text-align: center;
+    background-color: aqua;
+    width: 200px;
+    height: 200px;
+    margin: 15px;
+}
+
+#entries{
+    border: 1px black solid;
+    width: fit-content;
+}
+
+ul{    
+    list-style-type: none;
+}
+
+.activities{
+    display: inline-block;
+}
+
+.activities a{
+    vertical-align: top;
+}
